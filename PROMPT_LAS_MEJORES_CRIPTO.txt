@@ -1,0 +1,26 @@
+Hazme una página web de UN SOLO ARCHIVO HTML (todo dentro: HTML, CSS y JavaScript) con una tabla de las mayores criptomonedas, al estilo de CoinGecko, que pueda ordenar pinchando en las columnas. No sé programar: dame el archivo completo, listo para copiar, y dime cómo guardarlo y abrirlo con doble clic en mi ordenador (Windows o Mac).
+
+Lo que quiero:
+
+1. Datos, gratis y sin claves:
+   - La API pública de CoinGecko: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=150&page=1&price_change_percentage=1h,24h,7d,30d
+   - QUITA las monedas estables y los envoltorios, que no se mueven y solo estorban: USDT, USDC, DAI, USDe, FDUSD, PYUSD, WBTC, WETH, stETH, wstETH, cbBTC y similares, los símbolos que empiecen por "usd" o "eur", las que valgan entre 0,98 y 1,02 $ y casi no se muevan en 24 h, y los fondos tokenizados (precio plano un mes entero). Quédate con las 100 primeras que queden y numéralas del 1 al 100.
+   - Para 90 días, CoinGecko gratis no lo da: usa las velas diarias de Binance (https://api.binance.com/api/v3/klines?symbol=XXXUSDT&interval=1d&limit=91), cierre de hoy frente al de hace 90 días. Pídelas de 8 en 8 para no saturar. Descarta el dato si las velas son viejas (par deslistado) o si el precio de Binance se aleja más de un 15 % del de CoinGecko (es otra moneda con el mismo símbolo). Las que no tengan dato, con una raya «—».
+   - Que se actualice sola cada minuto (los 90 días, cada 30 minutos). Si CoinGecko devuelve el error 429 (límite de peticiones), que lo diga en el pie y lo reintente al minuto, sin romperse.
+
+2. La tabla:
+   - Columnas: #, moneda (logo, nombre y símbolo), precio, 1 h, 24 h, 7 d, 30 d, 90 d, volumen 24 h y capitalización.
+   - Porcentajes en verde con ▲ si suben y en rojo con ▼ si bajan.
+   - Precios con los decimales que hagan falta (las monedas de céntimos con más decimales). Volumen y capitalización abreviados: «1,85 bill. $», «950 M$».
+   - Pinchar en una columna ordena de mayor a menor; otra vez, de menor a mayor (nombre, de la A a la Z). Una flechita naranja en la columna activa. Las que no tengan dato, siempre al final.
+   - Botones Top 10, Top 25 (el de inicio), Top 50 y Top 100.
+   - Arriba, una línea que diga qué estoy viendo: «Las 25 más grandes · por 90 días, mayor a menor».
+
+3. Que se vea bien en todas partes:
+   - Ocupa toda la pantalla; la cabecera de la tabla se queda fija al bajar.
+   - En el móvil, la tabla se desliza de lado con el número y la moneda fijos a la izquierda (en pantallas estrechas, solo el símbolo para ahorrar sitio). Botones grandes y fáciles de tocar.
+   - Fondo oscuro, letra Inter, el naranja que yo quiera para lo destacado, filas alternas un poco más claras.
+   - Números en formato español (coma decimal, punto de miles).
+   - En el pie: «Datos: CoinGecko» con enlace a coingecko.com (lo piden sus condiciones) y la hora de la última actualización.
+
+Dame el archivo completo, sin trozos que falten. Si al abrirlo algo no sale, te digo lo que veo (o te pego el error de la consola del navegador) y lo arreglamos.
